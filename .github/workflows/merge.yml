@@ -1,4 +1,4 @@
-name: bi-weekly-push
+name: 🎭 Merge of `develop` and `main`
 on: [push]
 jobs:
   check:
@@ -19,8 +19,9 @@ jobs:
           signoff: false
           title: '🚀 [Automatic] Bi-weekly merge from develop -> main'
           body: |
+           
            This pull request was automatically generated using GitHub Workflows. Please do not interact with it.
-           It should be merged automatically.
+           It should be merged automatically, if you see this, it is very likely that something went wrong.
           labels: |
             automated-pr
             automerge
@@ -29,15 +30,12 @@ jobs:
           branch: develop
 
       - name: 🧮 Automatically Merge the Pull Request
-        uses: pascalgn/automerge-action@v0.13.1
+        uses: reitermarkus/automerge@v1.5.1
         with:
-          args: "--trace"
-        env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-          MERGE_LABELS: "automerge"
-          MERGE_RETRIES: "6"
-          MERGE_RETRY_SLEEP: "10000"
-          MERGE_METHOD: "merge"
+          token: ${{ secrets.MY_GITHUB_TOKEN }}
+          merge-method: merge
+          required-labels: automerge
+          
 
 
 
