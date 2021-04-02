@@ -30,6 +30,7 @@ jobs:
 
       - name: 🧮 Automatically Merge the Pull Request
         uses: pascalgn/automerge-action@v0.13.1
+        args: "--trace"
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           MERGE_LABELS: "automerge"
