@@ -9,7 +9,7 @@ jobs:
       - name: Make changes
         run: date +%s > report.txt
 
-      - name: Create Pull Request
+      - name: 🐱‍🚀 Create Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v3.8.2
         with:
@@ -17,7 +17,7 @@ jobs:
           committer: Avengard <avengard@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           signoff: false
-          title: '[Automatic] 🚀 Bi-weekly merge from develop -> main'
+          title: '🚀 [Automatic] Bi-weekly merge from develop -> main'
           body: |
            This pull request was automatically generated using GitHub Workflows. Please do not interact with it.
            It should be merged automatically.
@@ -28,11 +28,15 @@ jobs:
           base: main
           branch: develop
 
-          
-      - name: Check output
-        run: |
-          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
-          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
+      - name: 🧮 Automatically Merge the Pull Request
+        uses: pascalgn/automerge-action@v0.13.1
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          MERGE_LABELS: "automerge"
+          MERGE_RETRIES: "6"
+          MERGE_RETRY_SLEEP: "10000"
+
+
 
 
 
