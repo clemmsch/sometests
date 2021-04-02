@@ -30,15 +30,10 @@ jobs:
           branch: develop
 
       - name: 🧮 Automatically Merge the Pull Request
-        uses: reitermarkus/automerge@v1.5.1
+        uses: plm9606/automerge_actions@1.2.3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          label-name: automerge
+          reviewers-number: 0
           merge-method: merge
-          required-labels: automerge
-          
-
-
-
-
-
-
+          auto-delete: false
